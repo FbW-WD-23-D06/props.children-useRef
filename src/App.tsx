@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Post from "./components/Post";
+
+// Utilizing the children prop becomes valuable when you intend to employ the same component that can render different elements.
+// Moreover, this prop allows you to use another component as a child, offering flexibility and versatility in component composition.
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* use the Post component without props.children */}
+      <Post
+        title="Post 1"
+        text="93248328432984 dsfdsjfdkjf dfjkdsjflkdsfj sdlkjfldsfldsfkjdsf sdfdskjfdsjflsdf lksjdflkdsjflkjds"
+      />
+      {/* use the Post component with props.children */}
+      <Post
+        title="Post 2"
+        text="93248328432984 dsfdsjfdkjf dfjkdsjflkdsfj sdlkjfldsfldsfkjdsf sdfdskjfdsjflsdf lksjdflkdsjflkjds"
+      >
+        {/* child of Post */}
+        <p>Some element 1</p>
+        {/* child of Post */}
+        <h3>Some element 2</h3>
+      </Post>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
