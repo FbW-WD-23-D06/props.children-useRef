@@ -8,6 +8,4 @@
 
 - **useRef-dom**: This example shows how to use `useRef` to access DOM nodes or React elements created in the render method.
 
-  **react-bad-dom-manipulation**: understand why is bad manipulate the DOM using DOM selectors and not useRef
-
 - **useRef-prev-value**: This example shows how to use it to store previous value of a prop or state.
