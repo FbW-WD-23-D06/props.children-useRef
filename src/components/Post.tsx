@@ -13,7 +13,7 @@ export default function Post({ title, text, children }: PostProps) {
     <div style={{ border: "1px solid white", margin: 20 }}>
       <h6>{title}</h6>
       <p>{text}</p>
-      {children} {/* render children, children can be everything */}
+      {children} {/* render children, the children can be everything (node, html elements, etc...) */}
     </div>
   );
 }
