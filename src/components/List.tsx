@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 interface ListProps {
-  children: ReactNode;
+  children: ReactNode[];
   theme?: "chrismas" | "halloween" | "sommer";
 }
 
