@@ -1,26 +1,43 @@
-import { useEffect, useRef } from "react";
+import { useState, useRef, useEffect, ChangeEvent } from "react";
 import "./App.css";
 
-
-// With useRef we can access the DOM elements and style them like with DOM manipulation
+// the ref is used to persist a value between renders (without case re-render)
+// that can be useful when you want to store a value that you don't want to be part of the state
 
 function App() {
-  const appRef = useRef<HTMLDivElement>(null);
-  const inputTextRef = useRef<HTMLInputElement>(null);
-  console.log("appRef-outside-useEffect:", appRef); // we get null because the component has not been rendered yet
+  // State
+  const [stateValue, setStateValue] = useState<string>("");
+
+  // Ref
+  const refValue = useRef<string>("");
+
+  // Variabile
+  let variableValue: string = "";
 
   useEffect(() => {
-    console.log("appRef-in-useEffect:", appRef); // we get the div element because the component has been rendered
-    inputTextRef.current?.focus(); // we focus the input element when the component has been rendered
-    appRef.current?.style.setProperty("color", "red"); // we change the color of the div element when the component has been rendered
-  }, []);
+    console.log("State:", stateValue); // the state value is updated because the state was updated and case a re-render
+    console.log("Ref:", refValue.current); // the ref value is updated because the state was updated and the value persisted between renders (without case re-render)
+    console.log("Variable:", variableValue); // the variable value is "" because the variable value is not persisted between renders (without case re-render)
+  }, [stateValue, refValue, variableValue]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    // Update state value
+    setStateValue(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    refValue.current = stateValue; // update ref.current value
+
+    variableValue = stateValue; // update variable value
+
+    console.log("refValue:", refValue);
+    console.log("variableValue:", variableValue);
+  };
 
   return (
-    <div ref={appRef}>
-      {/* use the Post component without props.children */}
-      <h1>useRef</h1>
-      <label htmlFor="inputText">Please, write your name</label>
-      <input ref={inputTextRef} type="text" id="inputText" />
+    <div>
+      <input type="text" value={stateValue} onChange={handleChange} />
+      <button onClick={handleButtonClick}>Update State</button>
     </div>
   );
 }

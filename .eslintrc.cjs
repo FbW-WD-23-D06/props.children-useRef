@@ -14,5 +14,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    // slint-disable-next-line @typescript-eslint/no-explicit-any
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 }
