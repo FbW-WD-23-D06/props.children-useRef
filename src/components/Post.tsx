@@ -10,7 +10,7 @@ interface PostProps {
 export default function Post({ title, text, children }: PostProps) {
   console.log(`children-${title}:`, children);
   return (
-    <div style={{ border: "1px solid white", margin: 20 }}>
+    <div style={{ border: "1px solid black", margin: 20 }}>
       <h6>{title}</h6>
       <p>{text}</p>
       {children} {/* render children, the children can be everything (node, html elements, etc...) */}
