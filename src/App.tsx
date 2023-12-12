@@ -18,7 +18,6 @@ function App() {
 
   return (
     <div ref={appRef}>
-      {/* use the Post component without props.children */}
       <h1>useRef</h1>
       <label htmlFor="inputText">Please, write your name</label>
       <input ref={inputTextRef} type="text" id="inputText" />
